@@ -1,0 +1,15 @@
+body {
+  background: #f4f6f9;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+small {
+  color: #555;
+}

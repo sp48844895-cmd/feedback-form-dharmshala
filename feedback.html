@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guest Feedback Form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+  <div class="card shadow-lg">
+    <div class="card-header text-center bg-primary text-white">
+      <h4>Guest Feedback Form</h4>
+    </div>
+
+    <div class="card-body">
+      <form>
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label class="form-label">
+            नाम / Name
+          </label>
+          <input type="text" class="form-control" placeholder="Enter your name">
+        </div>
+
+        <!-- Mobile -->
+        <div class="mb-3">
+          <label class="form-label">
+            मोबाइल नंबर / Mobile Number
+          </label>
+          <input type="text" class="form-control" placeholder="Enter mobile number">
+        </div>
+
+        <!-- Q1 -->
+        <div class="mb-3">
+          <label class="form-label">
+            आपका कुल ठहरने का अनुभव कैसा रहा?<br>
+            <small>How was your overall stay experience?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत अच्छा (Excellent)</option>
+            <option>अच्छा (Good)</option>
+            <option>ठीक-ठाक (Average)</option>
+            <option>खराब (Poor)</option>
+            <option>बहुत खराब (Very Poor)</option>
+          </select>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mb-3">
+          <label class="form-label">
+             कमरे की सफाई से आप कितने संतुष्ट हैं?<br>
+            <small>How satisfied are you with the cleanliness?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत अधिक संतुष्ट (Very Satisfied)</option>
+            <option>संतुष्ट (Satisfied)</option>
+            <option>कुछ हद तक संतुष्ट (Somewhat Satisfied)</option>
+            <option>बिल्कुल संतुष्ट नहीं (Not Satisfied)</option>
+          </select>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mb-3">
+          <label class="form-label">
+            कमरे की स्थिति कैसी थी?<br>
+            <small>How was the condition of the room?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत बढ़िया (Excellent)</option>
+            <option>अच्छी (Good)</option>
+            <option>ठीक-ठाक (Average)</option>
+            <option>खराब (Poor)</option>
+          </select>
+        </div>
+
+        <!-- Q4 -->
+        <div class="mb-3">
+          <label class="form-label">
+            बाथरूम / शौचालय की सफाई कैसी थी?<br>
+            <small>How was the bathroom cleanliness?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत अच्छी (Excellent)</option>
+            <option>अच्छी (Good)</option>
+            <option>ठीक-ठाक (Average)</option>
+            <option>खराब (Poor)</option>
+          </select>
+        </div>
+
+        <!-- Q5 -->
+        <div class="mb-3">
+          <label class="form-label">
+            स्टाफ का व्यवहार कैसा था?<br>
+            <small>How was the staff behaviour?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत अच्छा (Very Good)</option>
+            <option>अच्छा (Good)</option>
+            <option>सामान्य (Average)</option>
+            <option>अच्छा नहीं था (Poor)</option>
+          </select>
+        </div>
+
+        <!-- -  Q6 -->
+        <!-- <div class="mb-3">
+          <label class="form-label">
+            चेक-इन और चेक-आउट प्रक्रिया कैसी रही?<br>
+            <small>How was the check-in and check-out process?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत सुगम (Very Smooth)</option>
+            <option>सुगम (Smooth)</option>
+            <option>अधिक समय लगा (Took Too Much Time)</option>
+            <option>समस्या हुई (Faced Issues)</option>
+          </select>
+        </div> -->
+
+        <!-- Q7 -->
+        <div class="mb-3">
+          <label class="form-label">
+            पानी, बिजली और अन्य मूलभूत सुविधाएँ कैसी थीं?<br>
+            <small>How were the basic facilities?</small>
+          </label>
+          <select class="form-select">
+            <option>बहुत अच्छी (Excellent)</option>
+            <option>अच्छी (Good)</option>
+            <option>ठीक-ठाक (Average)</option>
+            <option>समस्या हुई (Faced Problems)</option>
+          </select>
+        </div>
+
+        <!-- Q9 -->
+        <div class="mb-3">
+          <label class="form-label">
+            आपका बकाया पैसा पूरा वापस हुआ की नहीं ?<br>
+            <small>Would you like to stay here again?</small>
+          </label>
+          <select class="form-select">
+            <option>हाँ (Yes)</option>
+            <option>नहीं (No)</option>
+          </select>
+        </div>        
+
+        <!-- Q9 -->
+        <div class="mb-3">
+          <label class="form-label">
+            क्या आप भविष्य में दोबारा यहाँ ठहरना चाहेंगे?<br>
+            <small>Would you like to stay here again?</small>
+          </label>
+          <select class="form-select">
+            <option>हाँ, ज़रूर (Yes)</option>
+            <option>शायद (Maybe)</option>
+            <option>नहीं (No)</option>
+          </select>
+        </div>
+
+        <!-- Q10 -->
+        <div class="mb-3">
+          <label class="form-label">
+            क्या आप इस भवन को दूसरों को सुझाएंगे?<br>
+            <small>Would you recommend this Bhawan?</small>
+          </label>
+          <select class="form-select">
+            <option>हाँ (Yes)</option>
+            <option>शायद (Maybe)</option>
+            <option>नहीं (No)</option>
+          </select>
+        </div>
+
+        <!-- Suggestion -->
+        <div class="mb-3">
+          <label class="form-label">
+            सुझाव / शिकायत<br>
+            <small>Suggestions / Complaints</small>
+          </label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+        <button class="btn btn-success w-100">Submit Feedback</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Feedback Report</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  background:#f1f4f9;
+  font-family: 'Segoe UI', sans-serif;
+}
+.dashboard-title{
+  font-weight:700;
+}
+.card{
+  border-radius:14px;
+}
+.card h6{
+  font-weight:600;
+}
+canvas{
+  max-height:260px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid p-4">
+
+  <div class="mb-4 text-center">
+    <h2 class="dashboard-title">Guest Feedback Report</h2>
+    <p class="text-muted">Bhawan / Guest House Performance Overview</p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Q1 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>आपका कुल ठहरने का अनुभव कैसा रहा?</h6>
+        <canvas id="q1"></canvas>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>सफाई से आप कितने संतुष्ट हैं?</h6>
+        <canvas id="q2"></canvas>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>कमरे की स्थिति कैसी थी?</h6>
+        <canvas id="q3"></canvas>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>बाथरूम / शौचालय की सफाई कैसी थी?</h6>
+        <canvas id="q4"></canvas>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>स्टाफ / सेवक का व्यवहार कैसा था?</h6>
+        <canvas id="q5"></canvas>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>चेक-इन और चेक-आउट प्रक्रिया कैसी रही?</h6>
+        <canvas id="q6"></canvas>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>पानी, बिजली और अन्य सुविधाएँ कैसी थीं?</h6>
+        <canvas id="q7"></canvas>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>क्या आप भविष्य में दोबारा यहाँ ठहरना चाहेंगे?</h6>
+        <canvas id="q8"></canvas>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="card shadow-sm p-3">
+        <h6>क्या आप इस भवन को दूसरों को सुझाएंगे?</h6>
+        <canvas id="q9"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Common options with % sign
+const percentOptions = {
+  responsive: true,
+  plugins:{
+    tooltip:{
+      callbacks:{
+        label:function(context){
+          return context.raw + '%';
+        }
+      }
+    }
+  },
+  scales:{
+    y:{
+      beginAtZero:true,
+      max:100,
+      ticks:{
+        callback:(value)=> value + '%'
+      }
+    }
+  }
+};
+
+// Q1
+new Chart(q1,{
+  type:'pie',
+  data:{
+    labels:['बहुत अच्छा','अच्छा','ठीक-ठाक','खराब','बहुत खराब'],
+    datasets:[{data:[42,30,15,8,5]}]
+  },
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.raw+'%'}}}}
+});
+
+// Q2
+new Chart(q2,{
+  type:'bar',
+  data:{
+    labels:['बहुत संतुष्ट','संतुष्ट','कुछ हद तक','नहीं'],
+    datasets:[{data:[48,27,15,10]}]
+  },
+  options:percentOptions
+});
+
+// Q3
+new Chart(q3,{
+  type:'bar',
+  data:{
+    labels:['बहुत बढ़िया','अच्छी','ठीक-ठाक','खराब'],
+    datasets:[{data:[40,35,15,10]}]
+  },
+  options:percentOptions
+});
+
+// Q4
+new Chart(q4,{
+  type:'bar',
+  data:{
+    labels:['बहुत अच्छी','अच्छी','ठीक-ठाक','खराब'],
+    datasets:[{data:[45,30,15,10]}]
+  },
+  options:percentOptions
+});
+
+// Q5
+new Chart(q5,{
+  type:'pie',
+  data:{
+    labels:['बहुत अच्छा','अच्छा','सामान्य','खराब'],
+    datasets:[{data:[55,25,12,8]}]
+  },
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.raw+'%'}}}}
+});
+
+// Q6
+new Chart(q6,{
+  type:'bar',
+  data:{
+    labels:['बहुत सुगम','सुगम','समय लगा','समस्या'],
+    datasets:[{data:[50,25,15,10]}]
+  },
+  options:percentOptions
+});
+
+// Q7
+new Chart(q7,{
+  type:'bar',
+  data:{
+    labels:['बहुत अच्छी','अच्छी','ठीक-ठाक','समस्या'],
+    datasets:[{data:[46,28,16,10]}]
+  },
+  options:percentOptions
+});
+
+// Q8
+new Chart(q8,{
+  type:'pie',
+  data:{
+    labels:['हाँ','शायद','नहीं'],
+    datasets:[{data:[68,22,10]}]
+  },
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.raw+'%'}}}}
+});
+
+// Q9
+new Chart(q9,{
+  type:'pie',
+  data:{
+    labels:['हाँ','शायद','नहीं'],
+    datasets:[{data:[72,18,10]}]
+  },
+  options:{plugins:{tooltip:{callbacks:{label:c=>c.raw+'%'}}}}
+});
+</script>
+
+</body>
+</html>
