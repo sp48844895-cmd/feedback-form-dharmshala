@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Guest Feedback Form')</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    
+    <!-- iOS PWA Support -->
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Feedback">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -150,6 +161,135 @@
     @endif
 
     @yield('content')
+
+    <!-- Install App Button (Optional) -->
+    <div id="install-button-container" class="hidden fixed bottom-4 right-4 z-50">
+        <button id="install-button" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            <span>Install App</span>
+        </button>
+    </div>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // PWA Debugging
+        console.log('PWA Debug: Checking requirements...');
+        console.log('PWA Debug: Service Worker support:', 'serviceWorker' in navigator);
+        console.log('PWA Debug: Standalone mode:', window.matchMedia('(display-mode: standalone)').matches);
+        
+        // Check manifest
+        if ('serviceWorker' in navigator) {
+            fetch('/manifest.json')
+                .then(response => response.json())
+                .then(manifest => {
+                    console.log('PWA Debug: Manifest loaded:', manifest);
+                    console.log('PWA Debug: Icons count:', manifest.icons ? manifest.icons.length : 0);
+                })
+                .catch(err => console.error('PWA Debug: Manifest error:', err));
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('PWA Debug: Service Worker registered successfully:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('PWA Debug: New service worker available. Please refresh the page.');
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.error('PWA Debug: Service Worker registration failed:', error);
+                    });
+            });
+        } else {
+            console.warn('PWA Debug: Service Workers are not supported in this browser');
+        }
+
+        // Install Prompt Handler
+        let deferredPrompt;
+        const installButtonContainer = document.getElementById('install-button-container');
+        const installButton = document.getElementById('install-button');
+
+        // Listen for beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA Debug: beforeinstallprompt event fired');
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            // Show install button
+            if (installButtonContainer) {
+                installButtonContainer.classList.remove('hidden');
+                console.log('PWA Debug: Install button shown');
+            }
+        });
+
+        // Handle install button click
+        if (installButton) {
+            installButton.addEventListener('click', async () => {
+                if (!deferredPrompt) {
+                    console.warn('PWA Debug: No deferred prompt available');
+                    return;
+                }
+
+                console.log('PWA Debug: Showing install prompt');
+                // Show the install prompt
+                deferredPrompt.prompt();
+                
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('PWA Debug: User response to install prompt:', outcome);
+                
+                // Clear the deferredPrompt
+                deferredPrompt = null;
+                
+                // Hide the install button
+                if (installButtonContainer) {
+                    installButtonContainer.classList.add('hidden');
+                }
+            });
+        }
+
+        // Hide install button if app is already installed
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA Debug: PWA was installed');
+            if (installButtonContainer) {
+                installButtonContainer.classList.add('hidden');
+            }
+            deferredPrompt = null;
+        });
+
+        // Check if app is already installed (standalone mode)
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            console.log('PWA Debug: App is running in standalone mode');
+            if (installButtonContainer) {
+                installButtonContainer.classList.add('hidden');
+            }
+        }
+
+        // Log PWA installability check
+        setTimeout(() => {
+            if (!deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('PWA Debug: Install prompt not available. Common reasons:');
+                console.log('  - App already installed');
+                console.log('  - Browser doesn\'t support PWA');
+                console.log('  - Missing HTTPS (required except localhost)');
+                console.log('  - Missing or invalid manifest.json');
+                console.log('  - Missing or invalid icons');
+                console.log('  - Service worker not registered');
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
 
