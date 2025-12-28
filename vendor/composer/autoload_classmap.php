@@ -6,7 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\FeedbackController' => $baseDir . '/app/Http/Controllers/FeedbackController.php',
+    'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
+    'App\\Models\\Feedback' => $baseDir . '/app/Models/Feedback.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -129,6 +133,8 @@ return array(
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\FeedbackSeeder' => $baseDir . '/database/seeders/FeedbackSeeder.php',
+    'Database\\Seeders\\UserSeeder' => $baseDir . '/database/seeders/UserSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
     'DateException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
     'DateInvalidOperationException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -1566,6 +1572,7 @@ return array(
     'Illuminate\\Database\\Events\\DatabaseRefreshed' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/DatabaseRefreshed.php',
     'Illuminate\\Database\\Events\\MigrationEnded' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationEnded.php',
     'Illuminate\\Database\\Events\\MigrationEvent' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationEvent.php',
+    'Illuminate\\Database\\Events\\MigrationSkipped' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationSkipped.php',
     'Illuminate\\Database\\Events\\MigrationStarted' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationStarted.php',
     'Illuminate\\Database\\Events\\MigrationsEnded' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationsEnded.php',
     'Illuminate\\Database\\Events\\MigrationsEvent' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Events/MigrationsEvent.php',
@@ -5050,6 +5057,7 @@ return array(
     'SebastianBergmann\\CodeCoverage\\Util\\DirectoryCouldNotBeCreatedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/DirectoryCouldNotBeCreatedException.php',
     'SebastianBergmann\\CodeCoverage\\Util\\Filesystem' => $vendorDir . '/phpunit/php-code-coverage/src/Util/Filesystem.php',
     'SebastianBergmann\\CodeCoverage\\Util\\Percentage' => $vendorDir . '/phpunit/php-code-coverage/src/Util/Percentage.php',
+    'SebastianBergmann\\CodeCoverage\\Util\\Xml' => $vendorDir . '/phpunit/php-code-coverage/src/Util/Xml.php',
     'SebastianBergmann\\CodeCoverage\\Version' => $vendorDir . '/phpunit/php-code-coverage/src/Version.php',
     'SebastianBergmann\\CodeCoverage\\XmlException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/XmlException.php',
     'SebastianBergmann\\CodeUnitReverseLookup\\Wizard' => $vendorDir . '/sebastian/code-unit-reverse-lookup/src/Wizard.php',
