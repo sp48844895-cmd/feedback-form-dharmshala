@@ -45,7 +45,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Q1: Overall Experience -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Overall Experience / कुल अनुभव</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">आपका कुल ठहरने का अनुभव कैसा रहा?</label>
+                    <p class="text-xs text-gray-500 mb-3">How was your overall stay experience?</p>
                     @php
                         $overallColors = [
                             'excellent' => 'bg-green-100 text-green-800',
@@ -67,7 +68,8 @@
 
                 <!-- Q2: Cleanliness -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Cleanliness / सफाई</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">कमरे की सफाई से आप कितने संतुष्ट हैं?</label>
+                    <p class="text-xs text-gray-500 mb-3">How satisfied are you with the cleanliness?</p>
                     @php
                         $cleanLabels = [
                             'very_satisfied' => 'Very Satisfied / बहुत अधिक संतुष्ट',
@@ -82,7 +84,8 @@
 
                 <!-- Q3: Room Condition -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Room Condition / कमरे की स्थिति</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">कमरे की स्थिति कैसी थी?</label>
+                    <p class="text-xs text-gray-500 mb-3">How was the condition of the room?</p>
                     @php
                         $roomLabels = [
                             'excellent' => 'Excellent / बहुत बढ़िया',
@@ -97,7 +100,8 @@
 
                 <!-- Q4: Bathroom Cleanliness -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Bathroom Cleanliness / बाथरूम सफाई</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">बाथरूम / शौचालय की सफाई कैसी थी?</label>
+                    <p class="text-xs text-gray-500 mb-3">How was the bathroom cleanliness?</p>
                     @php
                         $bathroomLabels = [
                             'excellent' => 'Excellent / बहुत अच्छी',
@@ -112,7 +116,8 @@
 
                 <!-- Q5: Staff Behaviour -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Staff Behaviour / स्टाफ व्यवहार</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">स्टाफ का व्यवहार कैसा था?</label>
+                    <p class="text-xs text-gray-500 mb-3">How was the staff behaviour?</p>
                     @php
                         $staffLabels = [
                             'very_good' => 'Very Good / बहुत अच्छा',
@@ -127,7 +132,8 @@
 
                 <!-- Q7: Basic Facilities -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Basic Facilities / मूलभूत सुविधाएँ</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">पानी, बिजली और अन्य मूलभूत सुविधाएँ कैसी थीं?</label>
+                    <p class="text-xs text-gray-500 mb-3">How were the basic facilities?</p>
                     @php
                         $facilitiesLabels = [
                             'excellent' => 'Excellent / बहुत अच्छी',
@@ -142,7 +148,8 @@
 
                 <!-- Q8: Money Return -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Money Return / पैसा वापसी</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">आपका बकाया पैसा पूरा वापस हुआ की नहीं?</label>
+                    <p class="text-xs text-gray-500 mb-3">Was your remaining money fully returned?</p>
                     @php
                         $moneyColor = $feedback->money_return === 'yes' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
                         $moneyLabel = $feedback->money_return === 'yes' ? 'Yes / हाँ' : 'No / नहीं';
@@ -152,11 +159,13 @@
 
                 <!-- Q9: Stay Again -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Stay Again / दोबारा ठहरना</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">क्या आप भविष्य में दोबारा यहाँ ठहरना चाहेंगे?</label>
+                    <p class="text-xs text-gray-500 mb-3">Would you like to stay here again?</p>
                     @php
                         $stayLabels = [
-                            'yes' => 'Yes / हाँ, ज़रूर',
-                            'maybe' => 'Maybe / शायद'
+                            'yes' => 'Yes (हाँ)',
+                            'maybe' => 'Maybe (शायद)',
+                            'no' => 'No (नहीं)'
                         ];
                         $stayLabel = $stayLabels[$feedback->stay_again] ?? ucfirst($feedback->stay_again);
                     @endphp
@@ -165,11 +174,13 @@
 
                 <!-- Q10: Recommend -->
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Recommend / सुझाव</label>
+                    <label class="block text-sm font-semibold text-gray-800 mb-1">क्या आप इस भवन को दूसरों को सुझाएंगे?</label>
+                    <p class="text-xs text-gray-500 mb-3">Would you recommend this Bhawan to others?</p>
                     @php
                         $recommendLabels = [
-                            'yes' => 'Yes / हाँ',
-                            'maybe' => 'Maybe / शायद'
+                            'yes' => 'Yes (हाँ)',
+                            'maybe' => 'Maybe (शायद)',
+                            'no' => 'No (नहीं)'
                         ];
                         $recommendLabel = $recommendLabels[$feedback->recommend] ?? ucfirst($feedback->recommend);
                     @endphp
@@ -197,7 +208,13 @@
         <div class="px-6 sm:px-8 py-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
             <div>
                 <p class="text-xs text-gray-500">Submitted on / प्रस्तुत किया गया</p>
-                <p class="text-sm font-medium text-gray-700">{{ date('d M Y, h:i A', strtotime($feedback->created_at)) }}</p>
+                <p class="text-sm font-medium text-gray-700">
+                    @php
+                        // Parse the created_at timestamp and format it properly
+                        $date = \Carbon\Carbon::parse($feedback->created_at);
+                        echo $date->format('d M Y, h:i A');
+                    @endphp
+                </p>
             </div>
             <a href="{{ route('admin.list') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
                 Back to List
@@ -205,5 +222,67 @@
         </div>
     </div>
 </div>
+
+<!-- Session Keep-Alive Script -->
+<script>
+// Keep session alive by pinging server periodically
+(function() {
+    // Ping every 15 minutes (900000 ms) when page is active
+    const KEEP_ALIVE_INTERVAL = 15 * 60 * 1000; // 15 minutes
+    
+    let keepAliveTimer = null;
+    
+    // Function to ping server and refresh session
+    function pingServer() {
+        // Make a lightweight request to refresh session
+        fetch('{{ route("admin.list") }}', {
+            method: 'HEAD',
+            credentials: 'same-origin',
+            cache: 'no-cache'
+        }).catch(function(error) {
+            // Silently handle errors - don't disturb user experience
+            console.log('Session keep-alive ping failed:', error);
+        });
+    }
+    
+    // Start keep-alive when page becomes visible
+    function startKeepAlive() {
+        if (keepAliveTimer) {
+            clearInterval(keepAliveTimer);
+        }
+        // Ping immediately, then set interval
+        pingServer();
+        keepAliveTimer = setInterval(pingServer, KEEP_ALIVE_INTERVAL);
+    }
+    
+    // Stop keep-alive when page is hidden (background)
+    function stopKeepAlive() {
+        if (keepAliveTimer) {
+            clearInterval(keepAliveTimer);
+            keepAliveTimer = null;
+        }
+    }
+    
+    // Handle page visibility changes
+    if (document.hidden !== undefined) {
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                startKeepAlive();
+            } else {
+                stopKeepAlive();
+            }
+        });
+    }
+    
+    // Start keep-alive on page load if visible
+    if (!document.hidden) {
+        startKeepAlive();
+    }
+    
+    // Also start on window focus
+    window.addEventListener('focus', startKeepAlive);
+    window.addEventListener('blur', stopKeepAlive);
+})();
+</script>
 @endsection
 

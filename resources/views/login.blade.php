@@ -13,7 +13,9 @@
             <div class="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full -ml-24 -mb-24 blur-2xl"></div>
             
             <div class="relative z-10 text-center">
-                <h1 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight mb-2">Login</h1>
+                <h1 class="text-2xl sm:text-3xl font-semibold text-white tracking-tight mb-1">Shree Ram Bhavan Dharmashala</h1>
+                <p class="text-blue-100 text-sm sm:text-base font-light mb-3">श्रीराम भवन धर्मशाला</p>
+                <h2 class="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-2">Login</h2>
                 <p class="text-blue-100 text-base sm:text-lg font-light">Access your account</p>
             </div>
         </div>

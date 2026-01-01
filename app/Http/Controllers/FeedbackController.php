@@ -11,11 +11,7 @@ class FeedbackController extends Controller
     // Show feedback form
     public function index()
     {
-        // Check if user is logged in
-        if (!Session::has('user_id')) {
-            return redirect()->route('login')->with('error', 'Please login to submit feedback.');
-        }
-        
+        // Public feedback form - no login required
         return view('feedback');
     }
 
@@ -25,7 +21,7 @@ class FeedbackController extends Controller
         // Validate input
         $request->validate([
             'name' => 'nullable|string|max:255',
-            'mobile' => 'required|string|max:20',
+            'mobile' => 'required|string|regex:/^[0-9]{10}$/|size:10',
             'overall_experience' => 'required|string',
             'cleanliness' => 'required|string',
             'room_condition' => 'required|string',
@@ -36,6 +32,9 @@ class FeedbackController extends Controller
             'stay_again' => 'required|string',
             'recommend' => 'required|string',
             'suggestions' => 'nullable|string',
+        ], [
+            'mobile.regex' => 'Mobile number must be exactly 10 digits. / मोबाइल नंबर ठीक 10 अंकों का होना चाहिए।',
+            'mobile.size' => 'Mobile number must be exactly 10 digits. / मोबाइल नंबर ठीक 10 अंकों का होना चाहिए।',
         ]);
 
         // Insert feedback using Query Builder
@@ -149,61 +148,77 @@ class FeedbackController extends Controller
     }
 
     // Show reports with statistics
-    public function report()
+    public function report(Request $request)
     {
-        // Get total feedback count
-        $totalFeedbacks = DB::table('feedbacks')->count();
+        // Helper function to get base query with date filters
+        $getBaseQuery = function() use ($request) {
+            $query = DB::table('feedbacks');
+            
+            // Apply date filter if provided
+            if ($request->has('date_from') && $request->date_from) {
+                $query->whereDate('created_at', '>=', $request->date_from);
+            }
+            
+            if ($request->has('date_to') && $request->date_to) {
+                $query->whereDate('created_at', '<=', $request->date_to);
+            }
+            
+            return $query;
+        };
+
+        // Get total feedback count with filter
+        $totalFeedbacks = $getBaseQuery()->count();
 
         // Overall Experience Statistics
-        $overallExperience = DB::table('feedbacks')
+        $overallExperience = $getBaseQuery()
             ->select('overall_experience', DB::raw('count(*) as count'))
             ->groupBy('overall_experience')
             ->get();
 
         // Cleanliness Statistics
-        $cleanliness = DB::table('feedbacks')
+        $cleanliness = $getBaseQuery()
             ->select('cleanliness', DB::raw('count(*) as count'))
             ->groupBy('cleanliness')
             ->get();
 
         // Room Condition Statistics
-        $roomCondition = DB::table('feedbacks')
+        $roomCondition = $getBaseQuery()
             ->select('room_condition', DB::raw('count(*) as count'))
             ->groupBy('room_condition')
             ->get();
 
         // Bathroom Cleanliness Statistics
-        $bathroomCleanliness = DB::table('feedbacks')
+        $bathroomCleanliness = $getBaseQuery()
             ->select('bathroom_cleanliness', DB::raw('count(*) as count'))
             ->groupBy('bathroom_cleanliness')
             ->get();
 
         // Staff Behaviour Statistics
-        $staffBehaviour = DB::table('feedbacks')
+        $staffBehaviour = $getBaseQuery()
             ->select('staff_behaviour', DB::raw('count(*) as count'))
             ->groupBy('staff_behaviour')
             ->get();
 
         // Basic Facilities Statistics
-        $basicFacilities = DB::table('feedbacks')
+        $basicFacilities = $getBaseQuery()
             ->select('basic_facilities', DB::raw('count(*) as count'))
             ->groupBy('basic_facilities')
             ->get();
 
         // Money Return Statistics
-        $moneyReturn = DB::table('feedbacks')
+        $moneyReturn = $getBaseQuery()
             ->select('money_return', DB::raw('count(*) as count'))
             ->groupBy('money_return')
             ->get();
 
         // Stay Again Statistics
-        $stayAgain = DB::table('feedbacks')
+        $stayAgain = $getBaseQuery()
             ->select('stay_again', DB::raw('count(*) as count'))
             ->groupBy('stay_again')
             ->get();
 
         // Recommend Statistics
-        $recommend = DB::table('feedbacks')
+        $recommend = $getBaseQuery()
             ->select('recommend', DB::raw('count(*) as count'))
             ->groupBy('recommend')
             ->get();

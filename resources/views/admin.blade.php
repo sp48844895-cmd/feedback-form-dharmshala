@@ -557,4 +557,66 @@
     </div>
     @endif
 </div>
+
+<!-- Session Keep-Alive Script -->
+<script>
+// Keep session alive by pinging server periodically
+(function() {
+    // Ping every 15 minutes (900000 ms) when page is active
+    const KEEP_ALIVE_INTERVAL = 15 * 60 * 1000; // 15 minutes
+    
+    let keepAliveTimer = null;
+    
+    // Function to ping server and refresh session
+    function pingServer() {
+        // Make a lightweight request to refresh session
+        fetch('{{ route("admin.list") }}', {
+            method: 'HEAD',
+            credentials: 'same-origin',
+            cache: 'no-cache'
+        }).catch(function(error) {
+            // Silently handle errors - don't disturb user experience
+            console.log('Session keep-alive ping failed:', error);
+        });
+    }
+    
+    // Start keep-alive when page becomes visible
+    function startKeepAlive() {
+        if (keepAliveTimer) {
+            clearInterval(keepAliveTimer);
+        }
+        // Ping immediately, then set interval
+        pingServer();
+        keepAliveTimer = setInterval(pingServer, KEEP_ALIVE_INTERVAL);
+    }
+    
+    // Stop keep-alive when page is hidden (background)
+    function stopKeepAlive() {
+        if (keepAliveTimer) {
+            clearInterval(keepAliveTimer);
+            keepAliveTimer = null;
+        }
+    }
+    
+    // Handle page visibility changes
+    if (document.hidden !== undefined) {
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                startKeepAlive();
+            } else {
+                stopKeepAlive();
+            }
+        });
+    }
+    
+    // Start keep-alive on page load if visible
+    if (!document.hidden) {
+        startKeepAlive();
+    }
+    
+    // Also start on window focus
+    window.addEventListener('focus', startKeepAlive);
+    window.addEventListener('blur', stopKeepAlive);
+})();
+</script>
 @endsection

@@ -15,9 +15,10 @@
             <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-1.5">
                     <div class="w-1 h-8 bg-white/30 rounded-full"></div>
-                    <h1 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Guest Feedback</h1>
+                    <h1 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Shriram Bhavan Dharmshala</h1>
                 </div>
-                <p class="text-blue-100 text-base sm:text-lg ml-4 font-light">Share your valuable experience with us</p>
+                <p class="text-blue-100 text-base sm:text-lg ml-4 font-light">श्रीराम भवन धर्मशाला</p>
+                <p class="text-blue-100 text-base sm:text-lg ml-4 font-light mt-2">Please share your valuable experience with us.</p>
             </div>
         </div>
 
@@ -45,6 +46,32 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Mobile Field -->
+                        <div class="group">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3 tracking-wide">
+                                मोबाइल नंबर / Mobile Number
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                                <input 
+                                    type="tel" 
+                                    name="mobile"
+                                    id="mobileInput"
+                                    class="relative w-full px-5 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 outline-none text-sm text-gray-800 placeholder:text-gray-400 shadow-sm hover:border-indigo-300 hover:shadow-md"
+                                    placeholder="Enter 10-digit mobile number"
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    required
+                                >
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1.5 ml-1">10 digits only / केवल 10 अंक</p>
+                        </div>
+
                         <!-- Name Field -->
                         <div class="group">
                             <label class="block text-sm font-semibold text-gray-700 mb-3 tracking-wide">
@@ -61,28 +88,6 @@
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobile Field -->
-                        <div class="group">
-                            <label class="block text-sm font-semibold text-gray-700 mb-3 tracking-wide">
-                                मोबाइल नंबर / Mobile Number
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-                                <input 
-                                    type="tel" 
-                                    name="mobile"
-                                    class="relative w-full px-5 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 outline-none text-sm text-gray-800 placeholder:text-gray-400 shadow-sm hover:border-indigo-300 hover:shadow-md"
-                                    placeholder="Enter mobile number"
-                                    required
-                                >
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                     </svg>
                                 </div>
                             </div>
@@ -294,14 +299,18 @@
                             </label>
                             <p class="text-xs text-gray-500 font-medium">Would you like to stay here again?</p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <label for="stay_yes" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-cyan-500 has-[:checked]:bg-cyan-50 has-[:checked]:ring-cyan-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
-                                <span class="pr-10 text-sm">हाँ, ज़रूर (Yes)</span>
+                                <span class="pr-10 text-sm">Yes (हाँ)</span>
                                 <input type="radio" name="stay_again" value="yes" id="stay_yes" class="w-4 h-4 absolute accent-cyan-500 right-2.5" required>
                             </label>
                             <label for="stay_maybe" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-cyan-500 has-[:checked]:bg-cyan-50 has-[:checked]:ring-cyan-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
-                                <span class="pr-10 text-sm">शायद (Maybe)</span>
+                                <span class="pr-10 text-sm">Maybe (शायद)</span>
                                 <input type="radio" name="stay_again" value="maybe" id="stay_maybe" class="w-4 h-4 absolute accent-cyan-500 right-2.5">
+                            </label>
+                            <label for="stay_no" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-cyan-500 has-[:checked]:bg-cyan-50 has-[:checked]:ring-cyan-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
+                                <span class="pr-10 text-sm">No (नहीं)</span>
+                                <input type="radio" name="stay_again" value="no" id="stay_no" class="w-4 h-4 absolute accent-cyan-500 right-2.5">
                             </label>
                         </div>
                     </div>
@@ -312,16 +321,20 @@
                             <label class="block text-base font-semibold text-gray-800 mb-1.5">
                                 क्या आप इस भवन को दूसरों को सुझाएंगे?
                             </label>
-                            <p class="text-xs text-gray-500 font-medium">Would you recommend this Bhawan?</p>
+                            <p class="text-xs text-gray-500 font-medium">Would you recommend this Bhawan to others?</p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <label for="recommend_yes" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:ring-violet-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
-                                <span class="pr-10 text-sm">हाँ (Yes)</span>
+                                <span class="pr-10 text-sm">Yes (हाँ)</span>
                                 <input type="radio" name="recommend" value="yes" id="recommend_yes" class="w-4 h-4 absolute accent-violet-500 right-2.5" required>
                             </label>
                             <label for="recommend_maybe" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:ring-violet-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
-                                <span class="pr-10 text-sm">शायद (Maybe)</span>
+                                <span class="pr-10 text-sm">Maybe (शायद)</span>
                                 <input type="radio" name="recommend" value="maybe" id="recommend_maybe" class="w-4 h-4 absolute accent-violet-500 right-2.5">
+                            </label>
+                            <label for="recommend_no" class="font-medium h-11 relative hover:bg-zinc-100 flex items-center px-2.5 rounded-lg has-[:checked]:text-violet-500 has-[:checked]:bg-violet-50 has-[:checked]:ring-violet-300 has-[:checked]:ring-1 select-none border border-gray-200 transition-all shadow-[0px_0px_15px_rgba(0,0,0,0.09)]">
+                                <span class="pr-10 text-sm">No (नहीं)</span>
+                                <input type="radio" name="recommend" value="no" id="recommend_no" class="w-4 h-4 absolute accent-violet-500 right-2.5">
                             </label>
                         </div>
                     </div>
@@ -397,6 +410,12 @@
     </div>
 </div>
 
+<!-- Hidden Audio Element for Success Confirmation -->
+<audio id="successAudio" preload="auto" style="display: none;">
+    <source src="{{ asset('feedback-success.mp3') }}" type="audio/mpeg">
+    <source src="{{ asset('feedback-success.mp3') }}" type="audio/mp3">
+</audio>
+
 <!-- Toast Notification Container -->
 <div id="toast" class="fixed top-4 right-4 z-50 hidden">
     <div class="bg-white rounded-xl shadow-2xl border border-gray-200 p-4 min-w-[320px] max-w-md transform transition-all duration-300 ease-in-out">
@@ -423,11 +442,68 @@
 </div>
 
 <script>
+// Mobile number input validation - only allow digits
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileInput = document.getElementById('mobileInput');
+    if (mobileInput) {
+        // Only allow digits to be entered
+        mobileInput.addEventListener('input', function(e) {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+            // Limit to 10 digits
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+        
+        // Validate on blur
+        mobileInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (value && !validateMobileNumber(value)) {
+                this.classList.add('border-red-500');
+            } else {
+                this.classList.remove('border-red-500');
+            }
+        });
+        
+        // Remove error styling on focus
+        mobileInput.addEventListener('focus', function() {
+            this.classList.remove('border-red-500');
+        });
+    }
+});
+
+// Validate mobile number (10 digits)
+function validateMobileNumber(mobile) {
+    // Remove any spaces or special characters
+    const cleaned = mobile.replace(/\D/g, '');
+    // Check if exactly 10 digits
+    return /^[0-9]{10}$/.test(cleaned);
+}
+
 // Ensure form submits via POST only (AJAX to hide data from URL)
 function submitForm(event) {
     event.preventDefault();
     
     const form = event.target;
+    const mobileInput = document.getElementById('mobileInput');
+    const mobileValue = mobileInput.value.trim();
+    
+    // Validate mobile number (10 digits)
+    if (!validateMobileNumber(mobileValue)) {
+        alert('Please enter a valid 10-digit mobile number. / कृपया एक वैध 10 अंकों का मोबाइल नंबर दर्ज करें।');
+        mobileInput.focus();
+        mobileInput.classList.add('border-red-500');
+        setTimeout(function() {
+            mobileInput.classList.remove('border-red-500');
+        }, 3000);
+        return false;
+    }
+    
+    // Clean mobile number (remove any non-digits)
+    const cleanedMobile = mobileValue.replace(/\D/g, '');
+    mobileInput.value = cleanedMobile;
+    
     const formData = new FormData(form);
     const submitButton = form.querySelector('button[type="submit"]');
     
@@ -455,6 +531,10 @@ function submitForm(event) {
     .then(data => {
         // Show success toast
         showToast();
+        
+        // Play success audio confirmation
+        playSuccessAudio();
+        
         // Reset form
         form.reset();
         // Clean URL - remove any query parameters
@@ -496,10 +576,45 @@ function closeToast() {
     toast.classList.remove('animate-slide-in');
 }
 
+// Play success audio confirmation
+function playSuccessAudio() {
+    // Check if Android native interface is available (for Android app)
+    if (typeof AndroidAudio !== 'undefined' && AndroidAudio.playSuccessAudio) {
+        try {
+            // Use native Android audio playback
+            AndroidAudio.playSuccessAudio();
+        } catch (error) {
+            console.log('Android audio playback error:', error);
+            // Fallback to web audio
+            playWebAudio();
+        }
+    } else {
+        // Use web audio (for browsers)
+        playWebAudio();
+    }
+}
+
+// Play audio using web audio element
+function playWebAudio() {
+    const audio = document.getElementById('successAudio');
+    if (audio) {
+        // Reset audio to start from beginning
+        audio.currentTime = 0;
+        
+        // Play audio
+        audio.play().catch(error => {
+            // Handle audio playback errors gracefully
+            // Some browsers may block autoplay, which is fine
+            console.log('Audio playback prevented:', error);
+        });
+    }
+}
+
 // Show toast if success message exists (for page reload after redirect)
 @if(session('success'))
     document.addEventListener('DOMContentLoaded', function() {
         showToast();
+        // Audio removed - only plays on successful form submission via AJAX
         // Reset form after showing toast
         document.getElementById('feedbackForm').reset();
         // Clean URL
@@ -583,11 +698,18 @@ function closeToast() {
             console.error('Speech recognition error:', event.error);
             stopRecording();
             
-            let errorMsg = 'Speech recognition error. Please try again.';
+            let errorMsg = 'Speech recognition error. Please try again. / वॉइस रिकॉग्निशन त्रुटि। कृपया पुनः प्रयास करें।';
             if (event.error === 'no-speech') {
                 errorMsg = 'No speech detected. Please try again. / कोई भाषण नहीं मिला। कृपया पुनः प्रयास करें।';
             } else if (event.error === 'not-allowed') {
-                errorMsg = 'Microphone permission denied. Please allow microphone access. / माइक्रोफोन अनुमति अस्वीकृत। कृपया माइक्रोफोन पहुंच की अनुमति दें।';
+                errorMsg = 'Microphone permission denied. Please allow microphone access in app settings and try again. / माइक्रोफोन अनुमति अस्वीकृत। कृपया ऐप सेटिंग्स में माइक्रोफोन पहुंच की अनुमति दें और पुनः प्रयास करें।';
+            } else if (event.error === 'aborted') {
+                // User stopped or cancelled, don't show error
+                return;
+            } else if (event.error === 'network') {
+                errorMsg = 'Network error. Please check your internet connection. / नेटवर्क त्रुटि। कृपया अपना इंटरनेट कनेक्शन जांचें।';
+            } else if (event.error === 'service-not-allowed') {
+                errorMsg = 'Speech recognition service not available. Please try again later. / वॉइस रिकॉग्निशन सेवा उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।';
             }
             
             alert(errorMsg);
@@ -623,19 +745,117 @@ function closeToast() {
             micIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>';
         }
         
-        voiceBtn.addEventListener('click', function() {
-            if (!isRecording) {
-                // Start recording - save current text as base
-                baseText = suggestionsTextarea.value;
-                interimText = '';
-                lastFinalIndex = 0;
+        // Function to start voice recognition with permission check
+        function startVoiceRecognition() {
+            // Prevent multiple simultaneous starts
+            if (isRecording) {
+                return;
+            }
+            
+            // Check if we're in Android WebView
+            if (typeof AndroidPermission !== 'undefined') {
+                // Check permission first
+                if (!AndroidPermission.hasMicrophonePermission()) {
+                    // Request permission
+                    AndroidPermission.requestMicrophonePermission();
+                    // Wait for permission callback
+                    return;
+                }
+            }
+            
+            // Start recording - save current text as base
+            baseText = suggestionsTextarea.value;
+            interimText = '';
+            lastFinalIndex = 0;
+            
+            // Check if recognition is already running
+            if (recognition && isRecording) {
+                return;
+            }
+            
+            // Try to start recognition with retry mechanism
+            function attemptStart(retryCount) {
+                retryCount = retryCount || 0;
+                const maxRetries = 5; // Increased retries
+                
+                // Check if already recording
+                if (isRecording) {
+                    return;
+                }
                 
                 try {
-                    recognition.start();
+                    // Reset recognition if needed
+                    if (recognition) {
+                        try {
+                            recognition.stop();
+                        } catch (e) {
+                            // Ignore if not running
+                        }
+                    }
+                    
+                    // Small delay before starting
+                    setTimeout(function() {
+                        try {
+                            recognition.start();
+                        } catch (startError) {
+                            console.error('Error in recognition.start():', startError);
+                            handleRecognitionError(startError, retryCount, maxRetries);
+                        }
+                    }, 100);
                 } catch (error) {
                     console.error('Error starting recognition:', error);
-                    alert('Error starting voice recognition. Please try again. / वॉइस रिकॉग्निशन शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।');
+                    handleRecognitionError(error, retryCount, maxRetries);
                 }
+            }
+            
+            // Handle recognition errors
+            function handleRecognitionError(error, retryCount, maxRetries) {
+                if (retryCount < maxRetries) {
+                    // Retry after delay (increasing delay)
+                    const delay = 200 + (retryCount * 100);
+                    setTimeout(function() {
+                        attemptStart(retryCount + 1);
+                    }, delay);
+                } else {
+                    // Max retries reached, show error
+                    let errorMsg = 'Error starting voice recognition. Please try again. / वॉइस रिकॉग्निशन शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।';
+                    
+                    if (error && (error.name === 'InvalidStateError' || (error.message && error.message.includes('already started')))) {
+                        // Recognition already running, just return
+                        return;
+                    } else if (error && error.message && (error.message.includes('permission') || error.message.includes('not-allowed'))) {
+                        errorMsg = 'Microphone permission is required. Please allow microphone access in app settings and try again. / माइक्रोफोन अनुमति आवश्यक है। कृपया ऐप सेटिंग्स में माइक्रोफोन पहुंच की अनुमति दें और पुनः प्रयास करें।';
+                    }
+                    
+                    alert(errorMsg);
+                    stopRecording();
+                }
+            }
+            
+            // Start with delay to ensure WebView permission is ready
+            setTimeout(function() {
+                attemptStart(0);
+            }, 300);
+        }
+        
+        // Global callbacks for Android permission
+        window.onMicrophonePermissionGranted = function() {
+            console.log('Microphone permission granted, starting recognition...');
+            // Permission granted, try to start recognition with delay
+            setTimeout(function() {
+                startVoiceRecognition();
+            }, 500); // Increased delay to ensure WebView is ready
+        };
+        
+        window.onMicrophonePermissionDenied = function() {
+            console.log('Microphone permission denied');
+            alert('Microphone permission denied. Please enable it in app settings. / माइक्रोफोन अनुमति अस्वीकृत। कृपया ऐप सेटिंग्स में इसे सक्षम करें।');
+            stopRecording();
+        };
+        
+        voiceBtn.addEventListener('click', function() {
+            if (!isRecording) {
+                startVoiceRecognition();
             } else {
                 // Stop recording
                 stopRecording();

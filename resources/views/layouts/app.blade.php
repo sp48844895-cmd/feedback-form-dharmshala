@@ -33,7 +33,7 @@
                 <div class="flex items-center justify-between py-3">
                     <!-- Logo -->
                     <a href="{{ Session::get('user_role') === 'admin' ? route('admin.list') : route('feedback.index') }}" class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                        Feedback
+                        Shriram Bhawan Dharmshala
                     </a>
                     
                     <!-- Hamburger Menu Button -->
@@ -97,7 +97,7 @@
             <div class="hidden lg:flex items-center justify-between py-3">
                 <div class="flex items-center gap-8">
                     <a href="{{ Session::get('user_role') === 'admin' ? route('admin.list') : route('feedback.index') }}" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                        Feedback System
+                        Shriram Bhawan Dharmshala
                     </a>
                     @if(Session::get('user_role') === 'admin')
                     <div class="flex items-center gap-1">
